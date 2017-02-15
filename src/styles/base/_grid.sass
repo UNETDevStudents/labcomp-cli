@@ -1,0 +1,40 @@
+@import 'grid/row'
+@import 'grid/column'
+
+$breakpoints: (sm: $sm, md: $md, lg: $lg, hd: $hd, uhd: $uhd, x-uhd: $x-uhd)
+$breakpoints-desc: (x-uhd: $x-uhd, uhd: $uhd, hd: $hd, lg: $lg, md: $md, sm: $sm)
+
+.u
+  +e(row)
+    +row
+
+    +m(space)
+      padding-left: $small-white-space
+      padding-right: $small-white-space
+
+    +m(inside)
+      margin-left: -$small-white-space
+      margin-right: -$small-white-space
+      width: calc(100% + #{$half-white-space})
+
+  +e(column)
+    +m(space)
+      padding-left: $small-white-space
+      padding-right: $small-white-space
+
+@each $device, $size in $breakpoints-desc
+  +media($size)
+    @for $i from 1 through $columns
+      $column-list: null
+      $column-list: append($column-list, unquote('.u-column--#{$device}#{$i}'), comma)
+
+      #{$column-list}
+        +column($i)
+@each $device, $size in $breakpoints-desc
+  +media($size)
+    @for $i from 0 through $columns
+      $column-list: null
+      $column-list: append($column-list, unquote('.u-column-offset--#{$device}#{$i}'), comma)
+
+      #{$column-list}
+        margin-left: (($i / $columns) * 100) * 1%

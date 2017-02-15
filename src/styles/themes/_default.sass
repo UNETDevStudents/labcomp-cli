@@ -1,0 +1,94 @@
+header
+  background-color: $blue-dark-color
+
+.header
+  +e(topbar)
+    +e(links)
+      +e(icon)
+        a
+          background-color: rgba(0, 0, 0, .5)
+      +e(group)
+        li
+          a
+            color: $white-color
+            text-transform: uppercase
+
+  +e(info)
+    +e(title)
+      +e(text)
+        color: $white-color
+
+        h1
+          font-size: $x-large-size
+
+        h2
+          font-size: $large-size
+          font-weight: $font-weight-regular
+
+    +e(content)
+      +e(user)
+        +e(name)
+          font-size: $regular-size
+          font-weight: $font-weight-bold
+        +e(out)
+          background-color: $danger-color
+        background-color: $white-color
+
+.menu
+  +e(reservation)
+    a
+      background-color: $primary-color
+      color: $white-color !important
+
+      &:hover
+        background-color: darken($primary-color, 5%) !important
+  background-color: $white-color
+
+  ul
+    li
+      a
+        color: $default-color
+        font-size: $regular-size
+
+        &:hover
+          background-color: darken($white-color, 5%)
+
+.content
+  background-color: darken($white-color, 7%)
+
+footer
+  background-color: $black-color
+
+.footer
+  +e(foot)
+    +e(title)
+      +e(text)
+        color: $white-color
+
+    +e(content)
+      ul
+        li
+          a
+            color: $white-color
+            text-transform: uppercase
+
+            &:hover
+              text-decoration: underline
+
+    +e(text)
+      color: darken($white-color, 50%)
+
+    +m(border)
+      border-color: darken($white-color, 70%)
+
+.panel
+  +m(blue)
+    background-color: $blue-dark-color
+
+    .panel-title
+      h2
+        color: $white-color
+
+    .panel-body
+      p
+        color: $white-color

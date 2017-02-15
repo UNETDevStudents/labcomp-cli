@@ -1,0 +1,42 @@
+.footer
+  +e(foot)
+    +flexbox
+
+    +e(title)
+      +flexbox
+
+      +e(text)
+        margin-left: $small-white-space
+
+        h3
+          p
+            line-height: 1.4
+
+      align-items: center
+
+    +e(content)
+      margin-left: auto
+
+      ul
+        +flexbox
+
+        li
+          &:not(:last-child)
+            margin-right: $half-white-space
+
+    +e(text)
+      +m(right)
+        margin-left: auto
+
+    +m(border)
+      border-top: 1px solid transparent
+
+    align-items: center
+    padding: $half-white-space 0
+
+  +media($md)
+    +e(foot)
+      +e(content)
+        margin-top: $half-white-space
+
+      display: block

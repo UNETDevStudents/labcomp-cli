@@ -8,5 +8,5 @@ if [ "$NODE_ENV" == "production" ]; then
   PRETTY=""
 fi
 
-node-sass src/styles/main.sass -o $OUTPUT/assets/css
+node-sass --include-path node_modules/bourbon/app/assets/stylesheets src/styles/main.sass -o $OUTPUT/assets/css
 pug src/pages -o $OUTPUT $PRETTY

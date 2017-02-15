@@ -1,0 +1,64 @@
+.header
+  +e(topbar)
+    +flexbox
+
+    +e(links)
+      +flexbox
+
+      +e(icon)
+        a
+          min-width: (40 * $px)
+
+      +e(group)
+        +flexbox
+        margin-left: auto
+
+        li
+          a
+            line-height: (40 * $px)
+            min-height: (40 * $px)
+            padding: 0 $small-white-space
+            text-align: center
+
+      flex-direction: column
+      height: 100%
+      margin-left: auto
+
+    // min-height: (160 * $px)
+  +e(info)
+    +flexbox
+
+    +e(title)
+      +e(logo)
+        display: inline-block
+
+      +e(text)
+        display: inline-block
+
+      align-self: center
+      padding: $half-white-space 0
+
+    +e(content)
+      +flexbox
+
+      +e(user)
+        +flexbox
+
+        +e(name)
+          padding: $small-white-space
+
+        +e(out)
+          margin-left: auto
+
+          a
+            height: 100%
+            padding: $small-white-space
+
+        align-items: stretch
+        margin-bottom: $half-white-space
+        margin-top: auto
+
+      align-self: flex-end
+      margin-left: auto
+
+    align-items: center

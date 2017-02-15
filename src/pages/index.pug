@@ -2,3 +2,20 @@ doctype html
 html(lang="es")
 include ./../includes/head.pug
 body
+  .page
+    include ./../includes/header.pug
+    section.content
+      .banner
+      .home
+        .container
+          .u-row.u-row--inside
+            .u-column--space.u-column--x-uhd7.u-column--lg6.u-column--md12
+              .panel.panel--blue
+                .panel-title
+                  h2 ¿Te gustaría ser Administrador del Laboratorio de Computación Valerio Wong?
+                .panel-body
+                  p Adquiere conocimientos útiles que sirvan a futuro en el campo laboral.
+                  a(href="#").button.button--primary Contacto
+            .u-column--space.u-column--x-uhd5.u-column--lg6.u-column--md12
+              p asas
+    include ./../includes/footer.pug

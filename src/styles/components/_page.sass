@@ -1,0 +1,21 @@
+.page
+  +flexbox
+  flex-direction: column
+  flex-wrap: nowrap
+  height: 100%
+
+.container
+  +media($lg)
+    padding: 0 $half-white-space
+    width: 100%
+
+  margin: auto
+  max-width: $lg
+
+.content
+  flex: 1
+  padding: $half-white-space 0
+
+// Pages
+.home
+  margin-top: $half-white-space

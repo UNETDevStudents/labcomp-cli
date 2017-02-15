@@ -1,0 +1,54 @@
+$default-font-size: (14 * $px)
+$default-line-height: 1.6
+$padding-form-input: $small-white-space $half-white-space
+
+*
+  box-sizing: border-box
+
+html,
+body
+  min-height: 100%
+
+body
+  background-color: $white-color
+  color: $default-color
+  font-family: $font-family-text
+  font-size: $default-font-size
+  height: 100vh
+  line-height: $default-line-height
+
+ul,
+li,
+p
+  list-style: none
+  margin: 0
+  padding: 0
+
+a
+  display: block
+  text-decoration: none
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-weight: $font-weight-bold
+  margin: 0
+
+form
+  padding: $half-white-space
+
+  input,
+  select,
+  textarea
+    border: 0
+    font-size: $large-size
+    padding: $padding-form-input
+
+    &::-ms-input-placeholder
+      opacity: 1
+
+    &:focus
+      outline: none
