@@ -9,6 +9,11 @@
         a
           min-width: (40 * $px)
 
+          [class^='icon-']
+            font-size: $x-large-size
+            position: relative
+            top: 3.5px
+
       +e(group)
         +flexbox
         margin-left: auto
@@ -29,13 +34,18 @@
     +flexbox
 
     +e(title)
+      +flexbox
+
       +e(logo)
         display: inline-block
 
       +e(text)
         display: inline-block
+        margin-left: $half-white-space
 
+      align-items: center
       align-self: center
+      flex-wrap: nowrap
       padding: $half-white-space 0
 
     +e(content)
@@ -51,8 +61,23 @@
           margin-left: auto
 
           a
+            +flexbox
+
+            align-items: center
+            font-size: (11 * $px)
             height: 100%
+            letter-spacing: .5px
             padding: $small-white-space
+            text-transform: uppercase
+
+            span
+              line-height: 1rem
+              margin-left: $small-white-space
+
+            [class^='icon-']
+              font-size: $regular-size
+              position: relative
+              top: -1.5px
 
         align-items: stretch
         margin-bottom: $half-white-space

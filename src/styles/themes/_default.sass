@@ -25,13 +25,25 @@ header
           font-size: $large-size
           font-weight: $font-weight-regular
 
+      +media($md)
+        h1
+          font-size: $large-size
+
+        h2
+          font-size: $regular-size
+
     +e(content)
       +e(user)
         +e(name)
           font-size: $regular-size
           font-weight: $font-weight-bold
         +e(out)
-          background-color: $danger-color
+          a
+            color: $danger-color
+
+            [class^='icon-']
+              color: $danger-color
+
         background-color: $white-color
 
 .menu
@@ -42,7 +54,18 @@ header
 
       &:hover
         background-color: darken($primary-color, 5%) !important
+        color: $white-color !important
+
   background-color: $white-color
+
+  .active
+    background-color: $blue-color
+
+    a
+      color: $white-color
+
+      &:hover
+        background-color: darken($blue-color, 5%) !important
 
   ul
     li

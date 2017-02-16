@@ -10,13 +10,13 @@ header
               a(href="#") Contacto
             li.header-topbar-links-icon
               a(href="#")
-                i.icon-twitter
+                i.icon-twitter-square
             li.header-topbar-links-icon
               a(href="#")
-                i.icon-facebook
+                i.icon-facebook-square
       .header-info
         .header-info-title
-          img.header-info-title-logo
+          img(src="/assets/images/logo.png" width="75" height="auto").header-info-title-logo
           .header-info-title-text
             h1 Laboratorio de Computación
             h2 Prof. Valerio Wong
@@ -25,18 +25,19 @@ header
             .header-info-content-user-name
               p Prof. Dahyana Nimo
             .header-info-content-user-out
-              a(href="#") c
-                //- i.icon-close
+              a(href="#")
+                i.icon-power
+                span Cerrar sesión
 .menu
     .container
       ul
-        li
-          a(href="#") Labcomp
-        li
-          a(href="#") Noticias
-        li
-          a(href="#") Encuestas
-        li
-          a(href="#") Administradores
-        li.menu-reservation
-          a(href="#") Reservaciones
+        li#menu-labcomp
+          a(href="/labcomp") Labcomp
+        li#menu-noticias
+          a(href="/noticias") Noticias
+        li#menu-encuestas
+          a(href="/encuestas") Encuestas
+        li#menu-administradores
+          a(href="/administradores") Administradores
+        li#menu-reservaciones.menu-reservation
+          a(href="/reservaciones") Reservaciones

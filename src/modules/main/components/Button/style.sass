@@ -1,0 +1,26 @@
+.button
+  +m(default)
+    &::after
+      content: '\e095'
+      font-family: 'icomoon'
+      font-size: $regular-size
+      margin-left: $small-white-space
+      position: relative
+      top: 1.5px
+
+  +m(primary)
+    background-color: $primary-color
+    color: $white-color
+
+    &:hover
+      background-color: $blue-color
+
+  display: inline-block
+  font-size: (14 * $px)
+  font-weight: $font-weight-regular
+  letter-spacing: .5px
+  padding: $small-white-space $half-white-space
+  text-align: center
+  text-decoration: none
+  text-transform: uppercase
+  transition: background-color 300ms ease-out

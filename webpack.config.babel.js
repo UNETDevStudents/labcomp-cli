@@ -13,7 +13,7 @@ const entryPath = path.resolve('./src', 'modules');
 const files = () => {
   const names = {};
   config.modules.forEach((module) => {
-    names[module] = path.join(entryPath, module, 'index.js');
+    names[module] = path.join(entryPath, module, 'index.jsx');
   });
   return names;
 };
@@ -62,6 +62,9 @@ export default {
     }),
     new webpack.optimize.UglifyJsPlugin(),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [{
       test: /\.jsx$/,
@@ -70,6 +73,28 @@ export default {
       ],
       exclude: /node_modules/,
       loader: 'babel-loader',
+      query: {
+        presets: ['es2015', 'react'],
+      },
+    },
+    {
+      test: /\.sass$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader',
+        {
+          loader: 'sass-resources-loader',
+          options: {
+            resources: [
+              './src/styles/_settings.sass',
+              './src/styles/helpers/_bem.sass',
+              './src/styles/helpers/_flexbox.sass',
+              './src/styles/helpers/_mediaqueries.sass',
+            ],
+          },
+        },
+      ],
     }],
   },
 };
