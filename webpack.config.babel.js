@@ -48,7 +48,7 @@ export default {
     poll: true,
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
+    contentBase: path.resolve(__dirname, 'public'),
     compress: true,
     port,
   },
