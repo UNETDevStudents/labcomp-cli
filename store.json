@@ -1,0 +1,49 @@
+{
+  "base": {
+    "blocks": {},
+    "days": {},
+    "infrastructures": {
+      "1": {
+        "name": "Laboratorios",
+        "icon": "",
+        "rooms": {
+          "1": {
+            "name": "C01",
+            "characteristics": [
+              {
+                "name": "Infraestructura",
+                "icon": "",
+                "characteristics": [
+                  {
+                    "name": "Aire Acondicionado",
+                    "icon": "",
+                    "value": "Si"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+    }
+  },
+  "rooms": {
+    "1": {
+      "rows": [
+        {
+          "section": {
+            "code": "m1",
+            "subject": "Multimedia",
+            "subject_code": "123",
+            "color": "#e2c376"
+          },
+          "day": 0,
+          "blocks": [
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  }
+}

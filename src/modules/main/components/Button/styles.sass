@@ -1,4 +1,7 @@
 .button
+  +e(group)
+    +flexbox
+
   +m(default)
     &::after
       content: '\e095'
@@ -7,6 +10,17 @@
       margin-left: $small-white-space
       position: relative
       top: 1.5px
+
+  +m(icon)
+    i
+      font-size: $regular-size
+      position: relative
+      top: 1.5px
+
+  +m(small)
+    font-size: $medium-size !important
+    line-height: 1.4rem !important
+    padding: ($small-white-space / 2) $small-white-space !important
 
   +m(primary)
     background-color: $primary-color

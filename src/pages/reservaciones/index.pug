@@ -2,6 +2,44 @@ doctype html
 html(lang="es")
 include ./../../includes/head.pug
 body
-  include ./../../includes/header.pug
-  section.content
-  include ./../../includes/footer.pug
+  .page
+    include ./../../includes/header.pug
+    section.content
+      .reservation
+        .container
+          .u-row.u-row--inside
+            .u-column--space.u-column--x-uhd12
+              .panel.panel-container
+                .panel.panel--banner
+                  .panel-title
+                    h2 Reservaciones
+            .u-column--space.u-column--x-uhd12
+              .panel.panel-container
+                .alert.alert--warning
+                  .alert-content
+                    span
+                      i.icon-ban
+                    span Para hacer reservaciones, usted debe iniciar sesión con su cuenta Labcomp
+            .u-column--space.u-column--x-uhd12
+              .panel.panel-container
+                #Reservation
+                //- .tabs
+                //-   .tabs-head
+                //-     ul
+                //-       li.tabs-head-tab
+                //-         a(href="#").active Laboratorio
+                //-       li.tabs-head-tab
+                //-         a(href="#") Aulas
+                //-       li.tabs-head-tab
+                //-         a(href="#") Auditorio
+                //-       li.tabs-head-tab
+                //-         a(href="#") Otros
+                //-   .tabs-content
+                //-     .infrastructure
+                //-       ul
+                //-         li
+                //-           a(href="#") C01
+
+    include ./../../includes/footer.pug
+  include ./../../includes/commons.pug
+  script(src="/assets/js/reservation.js")

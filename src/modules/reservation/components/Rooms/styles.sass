@@ -1,0 +1,28 @@
+.rooms
+  padding-bottom: $small-white-space
+  width: 100%
+
+  ul
+    border-bottom: 1px solid $blue-color
+
+    li
+      a
+        color: $gray-color
+        display: inline-block
+        padding: $small-white-space
+        position: relative
+
+        &:hover
+          color: $blue-color
+
+      .selected
+        color: $blue-color
+
+        &:after
+          background-color: $blue-color
+          bottom: 0
+          content: ''
+          height: 2px
+          left: 0
+          position: absolute
+          width: 100%

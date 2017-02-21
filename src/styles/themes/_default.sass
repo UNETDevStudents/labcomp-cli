@@ -115,3 +115,30 @@ footer
     .panel-body
       p
         color: $white-color
+
+.alert
+  +m(warning)
+    .alert-content
+      span
+        color: darken($warning-color, 40%)
+
+    background-color: $warning-color
+
+.tabs
+  +e(head)
+    +e(tab)
+      .selected
+        background-color: $white-color
+
+        &:hover
+          background-color: $white-color
+
+      a
+        background-color: darken($white-color, 10%)
+        color: $default-color
+
+        &:hover
+          background-color: darken($white-color, 15%)
+
+  +e(content)
+    background-color: $white-color

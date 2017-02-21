@@ -9,4 +9,23 @@
     p
       margin-bottom: $small-white-space
 
+  +e(container)
+    margin: $small-white-space 0
+    padding: 0
+
+  +m(banner)
+    background-image: url('../images/labcomp.jpg')
+    background-position: bottom
+    background-size: cover
+    min-height: (4 * $white-space)
+
+    h2
+      font-size: $x-big-size
+
+    .panel-title
+      +flexbox
+
+      align-items: flex-end
+      min-height: (3 * $white-space)
+
   padding: $half-white-space
