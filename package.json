@@ -7,7 +7,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npm-run-all lint:*",
+    "lint": "npm-run-all lint:project",
     "lint:project": "eslint --cache --fix ./src/project",
     "lint:styles": "sass-lint './src/styles/**/*.s+(a|c)ss' -v -q",
     "clean": "./scripts/clean.sh",
