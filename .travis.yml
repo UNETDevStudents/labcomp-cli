@@ -1,11 +1,15 @@
 notifications:
   email: false
 
+sudo: required
 language: node_js
 node_js: 7
 
 addons:
   ssh_known_hosts: labcomp.edwarbaron.me
+
+before_install:
+  - sudo apt-get install sshpass
 
 install:
   - npm install
