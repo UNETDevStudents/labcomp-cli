@@ -48,7 +48,7 @@ export default {
     poll: true,
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
+    contentBase: path.resolve(__dirname, 'public'),
     compress: true,
     port,
   },
@@ -60,6 +60,7 @@ export default {
       },
       PRODUCTION: !debug,
     }),
+    new webpack.optimize.UglifyJsPlugin(),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],

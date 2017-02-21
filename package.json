@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npm-run-all lint:project",
-    "lint:project": "eslint --cache --fix ./src/modules",
+    "lint:project": "eslint --cache ./src/modules",
     "lint:styles": "sass-lint './src/styles/**/*.s+(a|c)ss' -v -q",
     "clean": "./scripts/clean.sh",
     "main": "npm-run-all clean lint build webpack",
