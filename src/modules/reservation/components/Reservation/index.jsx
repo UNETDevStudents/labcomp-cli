@@ -17,11 +17,15 @@ class Reservation extends Component {
     const { selected } = this.state;
     return (
       <Tabs
-        list={map(infrastructure, (item, key) => ({ key, name: item.name, icon: item.icon }))}
+        list={infrastructure ? map(infrastructure, (item, key) => ({ key, name: item.name, icon: item.icon })) : []}
         selected={selected}
       >
-        <Rooms rooms={infrastructure[selected].rooms} />
-        <Calendar blocks={blocks} days={days} data={data} />
+        {infrastructure &&
+          [
+            <Rooms rooms={infrastructure[selected].rooms} />,
+            <Calendar blocks={blocks} days={days} data={data} />,
+          ]
+        }
       </Tabs>
     );
   }
