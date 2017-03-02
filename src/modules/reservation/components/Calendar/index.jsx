@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import map from 'lodash/map';
 import keys from 'lodash/keys';
+import isEmpty from 'lodash/isEmpty';
 
 // import classnames from 'classnames';
 
@@ -70,7 +71,7 @@ class Calendar extends Component {
                 ))}
               </div>
               <div className="calendar-days-data">
-                { map(data.days, (day, key) => (
+                { !isEmpty(data) && map(data.days, (day, key) => (
                   <div key={key} className="calendar-days-data-column">
                     { map(day.blocks, (block, blockKey) => {
                       if (block.section) {

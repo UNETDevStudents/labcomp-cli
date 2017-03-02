@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 
 import { init } from './api';
 
+import { RESERVATION_SET_INITIAL_IDS } from './actionTypes';
+
 // const initialState = {
 //   1: {
 //     name: 'Laboratorios',
@@ -36,19 +38,92 @@ import { init } from './api';
 //   }
 // };
 
-// const infrastructure = (state = initialState, action = {}) => {
-//   switch (action.type) {
-//   default:
-//     return state;
-//   }
-// };
-
-// const base = combineReducers({
-//   infrastructure,
-// });
+const selected = (state = {}, action = {}) => {
+  switch (action.type) {
+  case RESERVATION_SET_INITIAL_IDS:
+    return Object.assign({}, state, {
+      infrastructure: action.payload[0],
+      room: action.payload[1],
+    });
+  default:
+    return state;
+  }
+};
 
 export default combineReducers({
   base: init.actions.base.reducer,
+  selected,
+  data: () => ({
+    days: {
+      0: {
+        blocks: {
+          1: {
+            section: {
+              code: 'm1',
+              subject: 'Multimedia',
+              subject_code: '123',
+              color: '#e2c376',
+            },
+          },
+          2: {
+            section: {
+              code: 'm1',
+              subject: 'Multimedia',
+              subject_code: '123',
+              color: '#e2c376',
+            },
+          },
+        },
+      },
+      1: {
+        blocks: {},
+      },
+      2: {
+        blocks: {},
+      },
+      3: {
+        blocks: {
+          1: {},
+          2: {},
+          3: {},
+          4: {
+            section: {
+              code: 'm1',
+              subject: 'Computación I',
+              subject_code: '123',
+              color: '#e2c376',
+            },
+          },
+        },
+      },
+      4: {
+        blocks: {},
+      },
+      5: {
+        blocks: {},
+      },
+      6: {
+        blocks: {},
+      },
+    },
+  }),
+  timetables: () => ({
+    rows: [
+      {
+        section: {
+          code: 'm1',
+          subject: 'Multimedia',
+          subject_code: '123',
+          color: '#e2c376',
+        },
+        day: 0,
+        blocks: [
+          1,
+          2,
+        ],
+      },
+    ],
+  }),
 });
 
 // export default combineReducers({

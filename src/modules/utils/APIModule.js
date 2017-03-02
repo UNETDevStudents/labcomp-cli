@@ -27,6 +27,8 @@ export class Action {
     this.actionsType = new ActionType(moduleName, self.name);
     this.reducer = this._reducer.bind(this);
     this.request = this._request.bind(this);
+    this.afterSuccess = self.afterSuccess;
+    this.errorHandling = self.errorHandling;
   }
   _method(self) {
     if (self.method) {
@@ -72,11 +74,11 @@ export class Action {
       fetch(this.url, data)
       .then(json => this._check(json))
       .then((json) => { dispatch(this.getState('REQUEST')); return json; })
-      .then((json) => { dispatch(this.getState('SUCCESS', json)); return json; })
+      .then((json) => { dispatch(this.getState('SUCCESS', json)); this.afterSuccess(dispatch, json); return json; })
       .catch(error => dispatch(this.getState('FAILURE', error)));
     };
   }
-  _check(response) {
+  _check(response) { // warning here
     let res = response && response.statusText !== 'No Content' ? response.json() : {};
     if (!response.ok) {
       res = res.then((err) => {
@@ -84,14 +86,6 @@ export class Action {
       });
     }
     return res;
-  }
-  _success(json) {
-    this.object.afterSuccess(json);
-    return this.getState('SUCCESS', json);
-  }
-  _failure(json) {
-    this.object.errorHandling(json);
-    return this.getState('FAILURE', json);
   }
   getState(result, args = {}) {
     return {
