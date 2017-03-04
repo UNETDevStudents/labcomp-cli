@@ -1,16 +1,45 @@
+import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import isEmpty from 'lodash/isEmpty';
 
 import Reservation from './components/Reservation';
+
+import reservationActions from './api';
+
+class Container extends Component {
+  componentWillMount() {
+    this.props.base();
+  }
+  componentWillReceiveProps(nextProps) {
+    if (!isEmpty(nextProps.infrastructure)) {
+      this.props.getCalendarByRoom(nextProps.selected.room);
+    }
+  }
+  render() {
+    return <Reservation {...this.props} />;
+  }
+}
+
+Container.propTypes = {
+  base: PropTypes.func.isRequired,
+  getCalendarByRoom: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => {
   const { reservation } = state;
   return {
-    infrastructure: reservation.base.infrastructure,
-    blocks: reservation.blocks,
-    days: reservation.days,
+    infrastructure: reservation.base.response ? reservation.base.response.infrastructures : {},
+    blocks: reservation.base.response ? reservation.base.response.blocks : {},
+    days: reservation.base.response ? reservation.base.response.days : {},
     data: reservation.data,
-    timetables: reservation.timetables,
+    selected: reservation.selected,
   };
 };
 
-export default connect(mapStateToProps)(Reservation);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  base: reservationActions.base,
+  getCalendarByRoom: reservationActions.getCalendarByRoom,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);

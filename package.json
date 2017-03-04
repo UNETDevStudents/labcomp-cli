@@ -11,7 +11,7 @@
     "lint:project": "eslint --cache ./src/modules",
     "lint:styles": "sass-lint './src/styles/**/*.s+(a|c)ss' -v -q",
     "clean": "./scripts/clean.sh",
-    "main": "npm-run-all clean lint build webpack",
+    "main": "npm-run-all clean build webpack",
     "main:watch": "concurrently --kill-others \"npm run watch\" \"webpack-dev-server\"",
     "build": "./scripts/build.sh",
     "watch": "./scripts/watch.sh",
@@ -71,6 +71,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   }
 }

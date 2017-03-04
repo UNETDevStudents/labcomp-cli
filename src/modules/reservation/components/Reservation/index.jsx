@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import map from 'lodash/map';
+import isEmpty from 'lodash/isEmpty';
 
 import Tabs from '../../../main/components/Tabs';
 import Rooms from '../Rooms';
@@ -15,13 +16,16 @@ class Reservation extends Component {
   render() {
     const { infrastructure, blocks, days, data } = this.props;
     const { selected } = this.state;
+    const rooms = !isEmpty(infrastructure) ? infrastructure[selected].rooms : {};
     return (
       <Tabs
-        list={map(infrastructure, (item, key) => ({ key, name: item.name, icon: item.icon }))}
+        list={infrastructure ? map(infrastructure, (item, key) => ({ key, name: item.name, icon: item.icon })) : []}
         selected={selected}
       >
-        <Rooms rooms={infrastructure[selected].rooms} />
-        <Calendar blocks={blocks} days={days} data={data} />
+        <div>
+          <Rooms rooms={rooms} />
+          <Calendar blocks={blocks} days={days} data={data} />
+        </div>
       </Tabs>
     );
   }
