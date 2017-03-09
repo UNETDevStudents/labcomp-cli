@@ -40,7 +40,7 @@ export default {
   devtool: debug ? 'inline-sourcemap' : false,
   entry: entryPoints,
   output: {
-    path: path.resolve(debug ? 'dist' : 'public', 'assets/js'),
+    path: path.resolve(debug ? 'dist' : 'dist', 'assets/js'),
     publicPath: '/assets/js/',
     filename: '[name].js',
   },
@@ -48,7 +48,7 @@ export default {
     poll: true,
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
+    contentBase: path.resolve(__dirname, 'dist'),
     compress: true,
     port,
   },

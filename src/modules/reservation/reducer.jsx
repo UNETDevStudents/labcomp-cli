@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 
 import { init } from './api';
 
+import { RESERVATION_SET_INITIAL_IDS } from './actionTypes';
+
 // const initialState = {
 //   1: {
 //     name: 'Laboratorios',
@@ -47,8 +49,22 @@ import { init } from './api';
 //   infrastructure,
 // });
 
+const selected = (state = {}, action = {}) => {
+  switch (action.type) {
+  case RESERVATION_SET_INITIAL_IDS:
+    return Object.assign({}, state, {
+      infrastructure: action.payload[0],
+      room: action.payload[1],
+    });
+  default:
+    return state;
+  }
+};
+
 export default combineReducers({
   base: init.actions.base.reducer,
+  selected,
+  getCalendarByRoom: init.actions.getCalendarByRoom.reducer,
 });
 
 // export default combineReducers({
