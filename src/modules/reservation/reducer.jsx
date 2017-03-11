@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 
 import { init } from './api';
+import map from 'lodash/map';
 
-import { RESERVATION_SET_INITIAL_IDS } from './actionTypes';
+import { RESERVATION_SET_INITIAL_IDS, RESERVATION_SET_CALENDAR_DATA } from './actionTypes';
 
 // const initialState = {
 //   1: {
@@ -61,10 +62,43 @@ const selected = (state = {}, action = {}) => {
   }
 };
 
+const data = (state = {}, action = {}) => {
+  switch (action.type) {
+  case RESERVATION_SET_CALENDAR_DATA: {
+    let skeletonCalendar = {}
+    skeletonCalendar['days'] = {}
+    map(Array(7), (val, key1) => {
+      let objSkeDay = {}
+      objSkeDay[key1] = {};
+      objSkeDay[key1]['blocks'] = {}
+      map(Array(16), (val, key2) => {
+        let objSkeBlock = {}
+        objSkeBlock[key2+1] = {}
+        Object.assign(objSkeDay[key1]['blocks'], objSkeBlock)
+      })
+      Object.assign(skeletonCalendar['days'], objSkeDay)
+    })
+
+    map(action.payload, (day, key1) => {
+      map(day.blocks, (block, key2) => {
+        let section = {}
+        section['section'] = day.section
+        Object.assign(skeletonCalendar['days'][day.day]['blocks'][block], section)
+      });
+    });
+    return Object.assign({}, state, skeletonCalendar);
+  }
+  default:
+    return state;
+  }
+};
+
+
 export default combineReducers({
   base: init.actions.base.reducer,
-  selected,
+  selected: selected,
   getCalendarByRoom: init.actions.getCalendarByRoom.reducer,
+  data: data,
 });
 
 // export default combineReducers({

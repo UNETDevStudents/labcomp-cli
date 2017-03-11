@@ -24,6 +24,7 @@ export class Action {
     }, initialState);
     this.method = this._method(self);
     this.url = this._url(self);
+    this.filter = self.filter
     this.actionsType = new ActionType(moduleName, self.name);
     this.reducer = this._reducer.bind(this);
     this.request = this._request.bind(this);
@@ -65,13 +66,14 @@ export class Action {
       return state;
     }
   }
-  _request(body = null) {
+  _request(body = null, filter = null) {
     return (dispatch) => {
       const data = {
         method: this.method,
         body,
       };
-      fetch(this.url, data)
+      const url = this.filter ? this.url.replace(`:${this.filter}`, filter) : this.url;
+      fetch(url, data)
       .then(json => this._check(json))
       .then((json) => { dispatch(this.getState('REQUEST')); return json; })
       .then((json) => { dispatch(this.getState('SUCCESS', json)); this.afterSuccess(dispatch, json); return json; })

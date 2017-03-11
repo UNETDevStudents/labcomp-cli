@@ -18,6 +18,7 @@ class Calendar extends Component {
   }
   render() {
     const { blocks, days, data } = this.props;
+    console.log(data);
     return (
       <div className="calendar">
         <div className="calendar-head">

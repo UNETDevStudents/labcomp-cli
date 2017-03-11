@@ -18,9 +18,10 @@ export const init = new Module('init', [
   {
     name: 'getCalendarByRoom',
     method: 'GET',
-    url: 'timetable/room/1',
+    url: 'timetable/room/:id',
+    filter: 'id',
     afterSuccess: (dispatch, json) => {
-      console.log(json);
+      dispatch(actions.setCalendarData(json));
     },
   }
   ]);

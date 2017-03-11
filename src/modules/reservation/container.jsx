@@ -10,11 +10,20 @@ import reservationActions from './api';
 class Container extends Component {
   componentWillMount() {
     this.props.base();
+
+    let requestGetCalendarByRoom = false;
+    this.setState({
+      requestGetCalendarByRoom
+    });
   }
   componentWillReceiveProps(nextProps) {
-    if (!isEmpty(nextProps.infrastructure) && !nextProps.data) {
-      this.props.getCalendarByRoom();
+    if (!isEmpty(nextProps.infrastructure) && nextProps.selected.room) {
+      if (!this.state.requestGetCalendarByRoom) {
+        this.setState({requestGetCalendarByRoom : true});
+        this.props.getCalendarByRoom(null, nextProps.selected.room);
+      }
     }
+   
   }
   render() {
     return <Reservation {...this.props} />;
@@ -32,7 +41,8 @@ const mapStateToProps = (state) => {
     infrastructure: reservation.base.response ? reservation.base.response.infrastructures : {},
     blocks: reservation.base.response ? reservation.base.response.blocks : {},
     days: reservation.base.response ? reservation.base.response.days : {},
-    data: reservation.getCalendarByRoom.response,
+    getCalendarByRoom: reservation.getCalendarByRoom.response,
+    data: reservation.data,
     selected: reservation.selected,
   };
 };
