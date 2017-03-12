@@ -39,6 +39,28 @@ class Calendar extends Component {
           <ReactModal 
             isOpen={this.state.showModal}
             contentLabel="Minimal Modal Example">
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Hora inicio:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                Hora fin:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                Fecha:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                Sala:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                Materia:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                Seccion:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                Tipo de reservacion:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+                Descripcion:
+                <input type="text" value={this.state.value} onChange={this.handleChange} />
+
+              </label>
+              <input type="submit" value="Submit" />
+            </form>
             <button onClick={this.handleCloseModal}>Close Modal</button>
           </ReactModal>
         </div>
