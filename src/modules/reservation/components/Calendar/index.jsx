@@ -9,18 +9,39 @@ import Button from '../../../main/components/Button';
 
 import './styles.sass';
 
+import ReactModal from 'react-modal';
+
 class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       week: '20 - 26',
+      showModal: false
     };
+
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
+
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
+  
+  handleCloseModal () {
+    this.setState({ showModal: false });
+  }
+
   render() {
     const { blocks, days, data } = this.props;
-    console.log(data);
     return (
       <div className="calendar">
+        <div>
+          <ReactModal 
+            isOpen={this.state.showModal}
+            contentLabel="Minimal Modal Example">
+            <button onClick={this.handleCloseModal}>Close Modal</button>
+          </ReactModal>
+        </div>
         <div className="calendar-head">
           <div className="calendar-head-item calendar-head-controls">
             <div className="button-group">
@@ -87,7 +108,7 @@ class Calendar extends Component {
                         );
                       }
                       return (
-                        <div className="calendar-blocks-item calendar-blocks-item-data" />
+                        <div className="calendar-blocks-item calendar-blocks-item-data" onClick={this.handleOpenModal} />
                       );
                     })}
                   </div>
